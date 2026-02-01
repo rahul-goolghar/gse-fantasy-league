@@ -8,7 +8,7 @@ html, body, [class*="st-"]:not(span):not(i) {
 }
 
 /* Remove or recolor the red focus outline on navigation buttons */
-button:focus, button:active, button:focus-visible {
+button:focus, button:active, button:focus-visible, button:hover {
     outline: none !important;
     box-shadow: none !important;
     border: 1px solid #00ff88 !important; /* Changes the red to your terminal green */
