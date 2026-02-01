@@ -141,7 +141,18 @@ else:
                 .dt.tz_convert(guyanaTZ) \
                 .dt.strftime('%b %d, %I:%M %p')
             df_display = df[['ticker', 'name', 'current_price', 'last_updated']]
-            st.table(df_display)
+            st.dataframe(
+                df_display,
+                column_config={
+                    "ticker": st.column_config.TextColumn("Ticker", width="small"),
+                    "name": st.column_config.TextColumn("Company Name", width="medium"),
+                    "current_price": st.column_config.NumberColumn("Price (GYD)", format="$%d"),
+                    "daily_change": st.column_config.NumberColumn("Change (%)", format="%.2f%%"),
+                },
+                hide_index=True,
+                use_container_width=True
+            )
+            #st.table(df_display)
             
             st.divider()
             st.subheader("Place a Buy Order")
@@ -208,7 +219,25 @@ else:
                     st.metric("Total Stock Value", f"${totalStockVal:,.2f} GYD")
 
                 st.write("### Your Holdings")
-                st.table(portfolioList)
+                df_holdings = pd.DataFrame(portfolioList)
+
+                # Use st.dataframe with column_config for a professional, responsive look
+                st.dataframe(
+                    df_holdings,
+                    column_config={
+                        "Ticker": st.column_config.TextColumn("Ticker", width="small"),
+                        "Name": st.column_config.TextColumn("Name", width="medium"),
+                        "Shares": st.column_config.NumberColumn("Shares"),
+                        "Average Price": st.column_config.TextColumn("Avg Price"),
+                        "Current Price": st.column_config.TextColumn("Current"),
+                        "Total Value": st.column_config.TextColumn("Value"),
+                        "P/L ($)": st.column_config.TextColumn("P/L ($)"),
+                        "P/L (%)": st.column_config.TextColumn("P/L (%)"),
+                    },
+                    hide_index=True,
+                    use_container_width=True
+                )
+                #st.table(portfolioList)
 
                 # --- DISTRIBUTION CHART ---
                 st.write("### Portfolio Breakdown")
@@ -287,7 +316,20 @@ else:
                     .dt.tz_convert(guyanaTZ) \
                     .dt.strftime('%b %d, %I:%M %p')
                 dfHistory = dfHistory[['created_at', 'type', 'ticker', 'quantity', 'price', 'total_value']]
-                st.table(dfHistory)
+                st.dataframe(
+                    dfHistory,
+                    column_config={
+                        "timestamp": st.column_config.DatetimeColumn("Date & Time", format="D MMM, h:mm a"),
+                        "ticker": st.column_config.TextColumn("Ticker"),
+                        "type": st.column_config.TextColumn("Action"), # Buy/Sell
+                        "shares": st.column_config.NumberColumn("Shares"),
+                        "price_at_time": st.column_config.NumberColumn("Price", format="$%.2f"),
+                        "total_cost": st.column_config.NumberColumn("Total", format="$%.2f"),
+                    },
+                    hide_index=True,
+                    use_container_width=True
+                )
+                #st.table(dfHistory)
         else:
             st.warning("Profile could not be loaded.")
 
@@ -300,7 +342,20 @@ else:
             dfLeaderboard.index = dfLeaderboard.index + 1
             dfLeaderboard.index.name = "Rank"
             dfLeaderboard['total_net_worth'] = dfLeaderboard['total_net_worth'].apply(lambda x: f"${x:,.2f} GYD")
-            st.table(dfLeaderboard[['username', 'total_net_worth']])
+            display_cols = ["username", "total_net_worth"]
+
+            # Use the column_config to ensure the currency looks professional
+            st.dataframe(
+                dfLeaderboard[display_cols], # Pass only the selected columns here
+                column_config={
+                    "Trader": st.column_config.TextColumn("Trader", width="medium"),
+                    "Net Worth (GYD)": st.column_config.NumberColumn("Net Worth", format="$%d")
+                },
+                hide_index=False,
+                use_container_width=True
+            )
+            #st.table(dfLeaderboard[['username', 'total_net_worth']])
+
             st.write("### Wealth Distribution")
 
             # We use .strip() to handle any accidental leading/trailing spaces

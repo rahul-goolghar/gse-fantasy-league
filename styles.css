@@ -137,3 +137,20 @@ a:hover {
 [data-testid="stSidebar"] {
     background-color: #10141b !important;
 }
+
+/* Mobile Responsiveness for Tables and Containers */
+@media screen and (max-width: 768px) {
+    .stTable, .stDataFrame {
+        font-size: 12px !important;
+    }
+    
+    /* Ensure metrics don't stack awkwardly */
+    [data-testid="stMetricValue"] {
+        font-size: 1.5rem !important;
+    }
+
+    /* Prevent the vertical text wrapping seen in your screenshot */
+    div[data-testid="stExpander"] div, .stTable td {
+        white-space: nowrap !important;
+    }
+}
