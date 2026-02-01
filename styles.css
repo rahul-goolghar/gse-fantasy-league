@@ -1,0 +1,139 @@
+/* 1. IMPORT PREMIUM FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap');
+
+/* 2. GLOBAL FONT RESET & ICON FIX */
+/* Force Inter for general text while preserving Material Symbols for icons */
+html, body, [class*="st-"]:not(span):not(i) {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* 3. PREMIUM CARD SYSTEM */
+/* Applies the rounded, bordered card look to Metrics and Column groups */
+[data-testid="stVerticalBlock"] > div:has(div.stMetric),
+[data-testid="column"] {
+    background: #161b22 !important;
+    border: 1px solid #30363d !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+}
+
+/* 4. UNIVERSAL TERMINAL-STYLE TABLES */
+/* This targets the wrapper around st.table and st.dataframe */
+[data-testid="stTable"], [data-testid="stDataFrame"], .stTable {
+    background-color: #161b22 !important;
+    border: 1px solid #30363d !important;
+    border-radius: 12px !important;
+    padding: 10px !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Force the actual HTML table inside to be transparent and clean */
+[data-testid="stTable"] table, [data-testid="stDataFrame"] table {
+    background-color: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+/* THEAD: Force the header look */
+[data-testid="stTable"] thead tr th, 
+[data-testid="stDataFrame"] thead tr th {
+    background-color: #0d1117 !important;
+    color: #8b949e !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px !important;
+    border-bottom: 2px solid #30363d !important;
+    text-align: center !important;
+}
+
+/* TBODY: Force the Monospace data look */
+[data-testid="stTable"] tbody tr td, 
+[data-testid="stDataFrame"] tbody tr td {
+    font-family: 'JetBrains Mono', monospace !important;
+    color: #c9d1d9 !important;
+    background-color: transparent !important;
+    border-bottom: 1px solid #21262d !important;
+    padding: 12px !important;
+    font-size: 0.9rem !important;
+}
+
+/* 5. METRIC POLISH */
+/* The vibrant green font for your $1,000,000 GYD balances */
+[data-testid="stMetricValue"] {
+    color: #00ff88 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-weight: 800 !important;
+    letter-spacing: -1px;
+}
+
+div[data-baseweb="select"] > div, 
+div[data-testid="stNumberInput"] div {
+    background-color: #0d1117 !important;
+    color: white !important;
+    border: 1px solid #30363d !important;
+}
+
+div[data-testid="stNumberInput"] button {
+    background-color: #0d1117;
+    color: white !important;
+}
+
+[data-testid="stMetricLabel"] {
+    font-weight: 600 !important;
+    color: #8b949e !important;
+    text-transform: uppercase;
+    font-size: 0.8rem !important;
+}
+
+label, p, [data-testid="stMarkdownContainer"] p {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    color: #ffffff !important;
+}
+
+
+
+/* 6. BUTTON POLISH */
+/* Signature green gradient buttons with hover scaling */
+div.stButton > button {
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none !important;
+    padding: 10px 24px !important;
+    background: linear-gradient(135deg, #00ff88 0%, #00bd65 100%) !important;
+    color: #000 !important;
+    transition: all 0.2s ease !important;
+}
+
+div.stButton > button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4) !important;
+}
+
+/* 7. CLEANUP & BRANDING HIDING */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {background: rgba(0,0,0,0) !important;}
+
+a {
+    color: #00ffaa !important;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #00bd65 !important;
+}
+
+/* Fix sidebar alignment to match the card background */
+[data-testid="stSidebar"] {
+    background-color: #10141b !important;
+}
