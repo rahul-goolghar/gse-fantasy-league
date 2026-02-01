@@ -21,49 +21,7 @@ def localCSS(fileName):
 localCSS("styles.css")
 
 # SIDEBAR AUTHENTICATION LOGIC
-'''def loginSidebar():
-    st.sidebar.title("👤 Account")
-    try:
-        userResponse = supabase.auth.get_user()
-        user = userResponse.user
-    except:
-        user = None
 
-    if not user:
-        tab1, tab2 = st.sidebar.tabs(["Login", "Sign Up"])
-
-        with tab1:
-            email = st.text_input("Email", key="login_email")
-            password = st.text_input("Password", type="password", key="login_pass")
-            if st.button("Login", use_container_width=True):
-                try:
-                    supabase.auth.sign_in_with_password({"email": email, "password": password})
-                    st.rerun()
-                except Exception as e:
-                    st.sidebar.error(f"Login failed: {e}")
-
-        with tab2:
-            newEmail = st.text_input("Email", key="reg_email")
-            newPass = st.text_input("Password", type="password", key="reg_pass")
-            newUser = st.text_input("Username", key="reg_user") 
-
-            if st.button("Create Account", use_container_width=True):
-                try:
-                    supabase.auth.sign_up({
-                        "email": newEmail, 
-                        "password": newPass,
-                        "options": {"data": {"username": newUser}}
-                    })
-                    st.success("Account created! Log in to start.")
-                except Exception as e:
-                    st.error(f"Sign up failed: {e}")
-        return None
-    else:
-        st.sidebar.write(f"Logged In As: **{user.email}**")
-        if st.sidebar.button("Logout", use_container_width=True):
-            supabase.auth.sign_out()
-            st.rerun()
-        return user.id'''
 
 def loginSidebar():
     st.sidebar.title("👤 Account")
