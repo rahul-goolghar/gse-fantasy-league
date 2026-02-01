@@ -8,10 +8,22 @@ html, body, [class*="st-"]:not(span):not(i) {
 }
 
 /* Remove or recolor the red focus outline on navigation buttons */
-button:focus, button:active, button:focus-visible, button:hover {
+button:focus, button:active, button:focus-visible {
     outline: none !important;
     box-shadow: none !important;
     border: 1px solid #00ff88 !important; /* Changes the red to your terminal green */
+    color: #00ff88 !important
+}
+
+button:active {
+    background-color: rgba(0, 255, 136, 0.2);
+    border-color: #00ff88 !important
+}
+
+button:hover {
+    border-color: #00ff88 !important;
+    color: #ffffff !important;
+    background-color: rgba(0,255,136, 0.1) !important;
 }
 
 /* Specific fix for the Streamlit Tab/Button highlight color */
