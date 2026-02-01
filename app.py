@@ -113,6 +113,8 @@ if not USER_ID:
         * **Compete:** See where you rank on the global leaderboard.
         
         **Please use the sidebar to Login or Sign Up to unlock the dashboard.**
+        * **Note on Privacy:** You do not need to use a real email address to create an account. Any address in a valid format (e.g., *user@test.com*) will work for the Supabase authentication. We use it only as a unique identifier for your portfolio.
+            
         """)
         st.info("**Ready to Trade?** Sign up now to receive your virtual $1,000,000 GYD immediately.")
             
