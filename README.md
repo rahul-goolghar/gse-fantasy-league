@@ -42,8 +42,8 @@ Follow these steps to set up the development environment on your local machine:
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/yourusername/FinanceGY.git](https://github.com/yourusername/FinanceGY.git)
-cd FinanceGY
+git clone https://github.com/rahul-goolghar/gse-fantasy-league.git
+cd gse-fantasy-league
 ```
 ### 2. Setup Virtual Environment
 ```bash
